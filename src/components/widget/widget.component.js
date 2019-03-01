@@ -4,7 +4,6 @@ import './widget.component.css'
 
 export default class TodosList extends Component {
  
-
   render() {
     return (
       <div className='widget'>
