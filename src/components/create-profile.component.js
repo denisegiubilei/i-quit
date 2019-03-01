@@ -62,6 +62,7 @@ export default class CreateTodo extends Component {
   }
 
   onSubmit(e) {
+    console.log(`Form submitted:`);
     e.preventDefault();
 
     console.log(`Form submitted:`);
@@ -72,11 +73,10 @@ export default class CreateTodo extends Component {
       packsPerDay: this.state.packsPerDay,
       pricePerPack: this.state.pricePerPack,
       cigsPerPack: this.state.cigsPerPack,
-      currency: this.state.currency,
-      completed: this.state.completed,
+      currency: this.state.currency
     };
 
-    axios.post('http://localhost:4000/profiles/add', newQuitProfile)
+    axios.post('http://localhost:4000/api/profiles/create', newQuitProfile)
       .then(res => console.log(res.data));
 
 
@@ -167,7 +167,6 @@ export default class CreateTodo extends Component {
               </div>
             </div>
           </div>
-
 
           <div className="form-group">
             <input type="submit" value="Create Todo" className="btn btn-primary" />

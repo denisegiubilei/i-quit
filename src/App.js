@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import logo from './stop.png';
 
-import CreateTodo from './components/create-user.component';
+import CreateTodo from './components/create-profile.component';
 import EditTodo from './components/edit-todo.component';
 import TodosList from './components/todos-list.component';
 

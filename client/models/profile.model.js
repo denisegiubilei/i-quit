@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ProfileSchema = new Schema({
-  day: { type: Date },
+  day: { type: String },
   hour: { type: Number },
   packsPerDay: { type: Number },
   pricePerPack: { type: Number },

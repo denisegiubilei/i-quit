@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Profile = require('../models/profile.model');
 
-exports.getProfile = (req, res) => {
+exports.getProfiles = (req, res) => {
   Profile.find({}, (err, profiles) => {
     if (err) {
       res.send(err);
@@ -11,11 +11,7 @@ exports.getProfile = (req, res) => {
 };
 
 exports.createProfile = (req, res) => {
-  const profile = new Profile({
-    title: req.body.title,
-    content: req.body.content
-  }
-  );
+  const profile = new Profile(req.body);
   profile.save(err => {
     if (err) {
       res.send(err);
