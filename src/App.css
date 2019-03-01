@@ -4,25 +4,16 @@
 
 .App-logo {
   height: 65vmin;
-  pointer-events: none;
+  cursor: pointer;
 }
 
 .App-header {
-  background-image: url(./quit-background.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #151515;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  color: red;
-  font-size: calc(20px + 2vmin); 
-  text-shadow: 2px 1px darkblue;
-  text-transform: uppercase;
-  font-weight: bold;
 }
 
 .App-link {

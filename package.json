@@ -7,7 +7,9 @@
     "bootstrap": "^4.3.1",
     "concurrently": "^4.1.0",
     "cors": "^2.8.5",
+    "moment": "^2.24.0",
     "react": "^16.8.3",
+    "react-anchor-link-smooth-scroll": "^1.0.11",
     "react-dom": "^16.8.3",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5"

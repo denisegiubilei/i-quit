@@ -16,7 +16,7 @@ export default class CreateTodo extends Component {
 
     this.state = {
       date: null,
-      packsPerDay: null,
+      packsPerDay: '',
       pricePerPack: ''
     }
   }
@@ -51,9 +51,15 @@ export default class CreateTodo extends Component {
       pricePerPack: this.state.pricePerPack,
     };
 
-   // axios.post('http://localhost:4000/api/profiles/create', newQuitProfile)
-//  .then(res => console.log(res.data));
+    axios.post('http://localhost:4000/api/profiles/create', newQuitProfile)
+      .then(res => console.log(res.data));
 
+
+    this.setState({
+      date: '',
+      packsPerDay: '',
+      pricePerPack: ''
+    })
   }
 
   render() {
@@ -61,9 +67,9 @@ export default class CreateTodo extends Component {
       <section id="create-profile" className="section-profile">
         <form onSubmit={this.onSubmit} className="form">
           <div className="form-group">
+            <label>The day I quit: </label>
             <input type="text"
               className="form-control"
-              placeholder="The day I quit"
               value={this.state.day}
               onBlur={this.onChangeDate}
             />
@@ -72,10 +78,10 @@ export default class CreateTodo extends Component {
           <div class="row">
             <div class="col">
               <div className="form-group">
+                <label>Packs per Day: </label>
                 <input
                   type="number"
                   className="form-control"
-                  placeholder="Packs per Day"
                   value={this.state.packsPerDay}
                   onChange={this.onChangePacksPerDay}
                 />
@@ -83,45 +89,19 @@ export default class CreateTodo extends Component {
             </div>
             <div class="col">
               <div className="form-group">
+                <label>Price per Pack: </label>
                 <input
                   type="number"
                   className="form-control"
-                  placeholder="Price per Pack"
                   value={this.state.pricePerPack}
                   onChange={this.onChangePricePerPack}
                 />
               </div>
             </div>
           </div>
-          <div className="form-group">
-            <input type="text"
-                className="form-control"
-                placeholder="E-mail"
-                value={this.state.day}
-                onBlur={this.onChangeDate}
-              />
-          </div>
-          <div className="form-group">
-              <input type="text"
-                className="form-control"
-                placeholder="Password"
-                value={this.state.day}
-                onBlur={this.onChangeDate}
-              />
-            </div>
-            <div className="form-group">
-              <input type="text"
-                className="form-control"
-                placeholder="Confirm password"
-                value={this.state.day}
-                onBlur={this.onChangeDate}
-              />
-            </div>
-            
-
 
           <div className="form-group">
-            <input type="submit" value="Check my progress" className="btn btn-dark" />
+            <input type="submit" value="Check my progress" className="btn btn-primary" />
           </div>
         </form>
       </section>

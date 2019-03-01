@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import logo from './stop.png';
+import AnchorLink from 'react-anchor-link-smooth-scroll'
+import logo from './static/stop.png';
 
 import CreateTodo from './components/create-profile.component';
 import EditTodo from './components/edit-todo.component';
-import TodosList from './components/todos-list.component';
+import Achievments from './components/achievements/achievements.component.js';
 
 import './App.css';
 
@@ -15,17 +16,22 @@ class App extends Component {
       <Router>
         <div className="App">
           <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
+
+            <AnchorLink href='#create-profile'>
+               <img src={logo} className="App-logo" alt="logo" />
+            </AnchorLink>
            
             <nav className="navbar navbar-expand-lg  ">
                 
                 <div className="collpase navbar-collapse">
                   <ul className="navbar-nav mr-auto">
                     <li className="navbar-item">
-                      <Link to="/" className="nav-link"></Link>
+                     
                     </li>
                     <li className="navbar-item">
-                      <Link to="/create" className="nav-link">I QUIT</Link>
+                      {/* <Link to="/create" className="nav-link" >
+                        <AnchorLink href='#create-profile'>I QUIT</AnchorLink>
+                      </Link> */}
                     </li>
                   </ul>
                 </div>
@@ -34,10 +40,9 @@ class App extends Component {
 
           </header>
           
-
-          <Route path="/" exact component={TodosList} />
           <Route path="/edit/:id" component={EditTodo} />
-          <Route path="/create" component={CreateTodo} />
+          <Route path="/" component={CreateTodo} />
+          <Route path="/" component={Achievments} />
          
         </div>
         

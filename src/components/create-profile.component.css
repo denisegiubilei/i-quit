@@ -1,0 +1,21 @@
+.section-profile {
+  background-image: url(../static/quit-background.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 30px;
+}
+
+.form {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+label {
+  color: #151515;
+}
+
+input[type="submit"] {
+  margin-top: 30px;
+}
