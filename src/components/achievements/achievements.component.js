@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Widget from '../create-profile/widget.component'
+import Widget from '../widget/widget.component'
 
 import './achievements.component.css';
 
