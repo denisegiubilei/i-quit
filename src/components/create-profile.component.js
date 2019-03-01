@@ -118,8 +118,6 @@ export default class CreateTodo extends Component {
               />
             </div>
             
-
-
           <div className="form-group">
             <input type="submit" value="Check my progress" className="btn btn-dark" />
           </div>
