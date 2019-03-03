@@ -17,7 +17,8 @@
     "react-scripts": "2.1.5"
   },
   "scripts": {
-    "start": "concurrently \"react-scripts start\" \"node client/server.js\"",
+    "start": "cd client && npm install && npm start",
+    "heroku-postbuild": "npm install l && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
