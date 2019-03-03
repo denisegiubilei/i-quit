@@ -29,6 +29,9 @@ export default class Achievements extends Component {
   }
 
   getHowLong(quitDate){
+    if (!quitDate) {
+      return null;
+    } 
     const duration = this.getDuration(quitDate);
     const days = duration.days();
     const hours = duration.hours();
@@ -37,12 +40,18 @@ export default class Achievements extends Component {
   }
 
   getMoneySaved(quitDate, packsPerWeek, pricePerPack){
+    if (!quitDate || !packsPerWeek || !pricePerPack) {
+      return null;
+    } 
     const packsPerHour = packsPerWeek / 7 / 24; 
     const totalMoney = this.getDuration(quitDate).asHours() * packsPerHour * pricePerPack;
     return parseFloat(totalMoney.toFixed(2));
   }
 
   getCigsMissed(quitDate, packsPerWeek){
+    if (!quitDate || !packsPerWeek) {
+      return null;
+    } 
     const cigsPerPack = 20;
     const packsPerHour = packsPerWeek / 7 / 24; 
     const cigsMissed =  this.getDuration(quitDate).asHours() * packsPerHour * cigsPerPack;

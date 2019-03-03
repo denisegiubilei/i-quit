@@ -147,12 +147,16 @@ export default class CreateProfile extends React.Component {
               />
             </Form.Group>
             <Button variant="dark" type="submit">
-              Check my Progress
+              Save my Progress
             </Button>
           </Form>;
         </section>
         <section id="achievements">
-          <Achievements date={this.state.date} pricePerPack={this.state.pricePerPack} packsPerWeek={this.state.packsPerWeek} />
+          <Achievements 
+            date={this.state.date} 
+            pricePerPack={this.state.pricePerPack} 
+            packsPerWeek={this.state.packsPerWeek} 
+          />
         </section>
       </React.Fragment>
     )
