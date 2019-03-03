@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const ProfileSchema = new Schema({
   date: { type: Date },
-  packsPerDay: { type: Number },
+  packsPerWeek: { type: Number },
   pricePerPack: { type: Number },
   email: { type: String },
   password: {type: String}

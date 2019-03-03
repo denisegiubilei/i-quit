@@ -10,13 +10,13 @@ export default class CreateTodo extends Component {
     super(props);
 
     this.onChangeDate = this.onChangeDate.bind(this);
-    this.onChangePacksPerDay = this.onChangePacksPerDay.bind(this);
+    this.onChangePacksPerWeek = this.onChangePacksPerWeek.bind(this);
     this.onChangePricePerPack = this.onChangePricePerPack.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       date: null,
-      packsPerDay: '',
+      packsPerWeek: '',
       pricePerPack: ''
     }
   }
@@ -27,9 +27,9 @@ export default class CreateTodo extends Component {
     });
   }
 
-  onChangePacksPerDay(e) {
+  onChangePacksPerWeek(e) {
     this.setState({
-      packsPerDay: e.target.value
+      packsPerWeek: e.target.value
     });
   }
 
@@ -47,7 +47,7 @@ export default class CreateTodo extends Component {
 
     const newQuitProfile = {
       date: this.state.date,
-      packsPerDay: this.state.packsPerDay,
+      packsPerWeek: this.state.packsPerWeek,
       pricePerPack: this.state.pricePerPack,
     };
 
@@ -57,7 +57,7 @@ export default class CreateTodo extends Component {
 
     this.setState({
       date: '',
-      packsPerDay: '',
+      packsPerWeek: '',
       pricePerPack: ''
     })
   }
@@ -78,12 +78,12 @@ export default class CreateTodo extends Component {
           <div class="row">
             <div class="col">
               <div className="form-group">
-                <label>Packs per Day: </label>
+                <label>Packs per Week: </label>
                 <input
                   type="number"
                   className="form-control"
-                  value={this.state.packsPerDay}
-                  onChange={this.onChangePacksPerDay}
+                  value={this.state.packsPerWeek}
+                  onChange={this.onChangePacksPerWeek}
                 />
               </div>
             </div>

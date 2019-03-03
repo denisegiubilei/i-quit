@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 
 import './widget.component.css'
 
-export default class TodosList extends Component {
- 
+class Widget extends Component {
   render() {
     return (
       <div className='widget'>
@@ -14,3 +13,5 @@ export default class TodosList extends Component {
     )
   }
 }
+
+export default Widget;

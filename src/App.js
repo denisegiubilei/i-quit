@@ -11,6 +11,14 @@ import Achievments from './components/achievements/achievements.component.js';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: null,
+      packsPerWeek: null,
+      pricePerPack: null,
+    };
+  }
   render() {
     return (
       <Router>
@@ -42,7 +50,6 @@ class App extends Component {
           
           <Route path="/edit/:id" component={EditTodo} />
           <Route path="/" component={CreateTodo} />
-          <Route path="/" component={Achievments} />
          
         </div>
         

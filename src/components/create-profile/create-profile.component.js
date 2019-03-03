@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
+import DatePicker from 'react-datepicker';
 import moment from 'moment'
 import axios from 'axios';
 
 import './create-profile.component.css';
+import 'react-datepicker/dist/react-datepicker.css';
 
-export default class CreateTodo extends Component {
+import Achievements from '../achievements/achievements.component';
+
+export default class CreateProfile extends Component {
 
   constructor(props) {
     super(props);
 
     this.onChangeDate = this.onChangeDate.bind(this);
-    this.onChangePacksPerDay = this.onChangePacksPerDay.bind(this);
+    this.onChangePacksPerWeek = this.onChangePacksPerWeek.bind(this);
     this.onChangePricePerPack = this.onChangePricePerPack.bind(this);
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
@@ -19,8 +23,8 @@ export default class CreateTodo extends Component {
 
     this.state = {
       date: null,
-      packsPerDay: null,
-      pricePerPack: '',
+      packsPerWeek: null,
+      pricePerPack: null,
       email: '',
       password: '',
       passwordConfirm: ''
@@ -29,13 +33,13 @@ export default class CreateTodo extends Component {
 
   onChangeDate(e) {
     this.setState({
-      date: moment(e.target.value, 'DD/MM/YYYY HH:mm').toDate()
+      date: e
     });
   }
 
-  onChangePacksPerDay(e) {
+  onChangePacksPerWeek(e) {
     this.setState({
-      packsPerDay: e.target.value
+      packsPerWeek: e.target.value
     });
   }
 
@@ -70,7 +74,7 @@ export default class CreateTodo extends Component {
 
     const newQuitProfile = {
       date: this.state.date,
-      packsPerDay: this.state.packsPerDay,
+      packsPerWeek: this.state.packsPerWeek,
       pricePerPack: this.state.pricePerPack,
       email: this.state.email,
       password: this.state.password
@@ -83,71 +87,79 @@ export default class CreateTodo extends Component {
 
   render() {
     return (
-      <section id="create-profile" className="section-profile">
-        <form onSubmit={this.onSubmit} className="form">
-          <div className="form-group">
-            <input type="text"
-              className="form-control"
-              placeholder="The day I quit"
-              value={this.state.day}
-              onBlur={this.onChangeDate}
-            />
-          </div>
-
-          <div class="row">
-            <div class="col">
-              <div className="form-group">
-                <input
-                  type="number"
-                  className="form-control"
-                  placeholder="Packs per Day"
-                  value={this.state.packsPerDay}
-                  onChange={this.onChangePacksPerDay}
-                />
-              </div>
-            </div>
-            <div class="col">
-              <div className="form-group">
-                <input
-                  type="number"
-                  className="form-control"
-                  placeholder="Price per Pack"
-                  value={this.state.pricePerPack}
-                  onChange={this.onChangePricePerPack}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="form-group">
-            <input type="text"
+      <React.Fragment>
+        <section id="create-profile" className="section-profile">
+          <form onSubmit={this.onSubmit} className="form">
+            <div className="form-group">
+              <DatePicker
+                placeholderText="The day I quit"
+                selected={this.state.date}
+                onChange={this.onChangeDate}
                 className="form-control"
-                placeholder="E-mail"
-                value={this.state.email}
-                onBlur={this.onChangeEmail}
+                showTimeSelect
+                timeFormat="HH:mm"
+                timeIntervals={60}
+                dateFormat="MMMM d, yyyy h:mm aa"
+                timeCaption="time"
               />
-          </div>
-          <div className="form-group" style={{display: this.props.showSignUp ? 'block' : 'none' }}>
+            </div>
+            <div className="row">
+              <div className="col">
+                <div className="form-group">
+                  <input
+                    type="number"
+                    className="form-control"
+                    placeholder="Packs per Week"
+                    value={this.props.packsPerWeek}
+                    onChange={this.onChangePacksPerWeek}
+                  />
+                </div>
+              </div>
+              <div className="col">
+                <div className="form-group">
+                  <input
+                    type="number"
+                    className="form-control"
+                    placeholder="Price per Pack"
+                    value={this.props.pricePerPack}
+                    onChange={this.onChangePricePerPack}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="form-group">
               <input type="text"
-                className="form-control"
-                placeholder="Password"
-                value={this.state.password}
-                onBlur={this.onChangePassword}
-              />
+                  className="form-control"
+                  placeholder="E-mail"
+                  value={this.state.email}
+                  onBlur={this.onChangeEmail}
+                />
             </div>
             <div className="form-group" style={{display: this.props.showSignUp ? 'block' : 'none' }}>
-              <input type="text"
-                className="form-control"
-                placeholder="Confirm password"
-                value={this.state.passwordConfirm}
-                onBlur={this.onChangePasswordConfirm}
-              />
+                <input type="text"
+                  className="form-control"
+                  placeholder="Password"
+                  value={this.state.password}
+                  onBlur={this.onChangePassword}
+                />
+              </div>
+              <div className="form-group" style={{display: this.props.showSignUp ? 'block' : 'none' }}>
+                <input type="text"
+                  className="form-control"
+                  placeholder="Confirm password"
+                  value={this.state.passwordConfirm}
+                  onBlur={this.onChangePasswordConfirm}
+                />
+              </div>
+            <div className="form-group">
+              <input type="submit" value="Check my progress" className="btn btn-dark" />
             </div>
-            
-          <div className="form-group">
-            <input type="submit" value="Check my progress" className="btn btn-dark" />
-          </div>
-        </form>
-      </section>
+          </form>
+        </section>
+        <section id="achievements">
+          <Achievements date={this.state.date} pricePerPack={this.state.pricePerPack} packsPerWeek={this.state.packsPerWeek} />
+        </section>
+      </React.Fragment>
     )
   }
 }
