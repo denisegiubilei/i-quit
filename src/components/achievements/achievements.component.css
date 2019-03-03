@@ -1,17 +1,6 @@
 #achievements {
-  /* text-align: center; */
-  /* display: inline-block; */
-  /* height: 50vh; */
   display: flex;
   min-height: 50vh;
   justify-content: center;
   align-items: center;
-}
-
-@media screen and (max-width: 680px) {
-  .widget {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
 }

@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Widget from '../widget/widget.component'
 import moment from 'moment'
 
 import './achievements.component.css';
 
-export default class Achievements extends Component {
+export default class Achievements extends React.Component {
   constructor(props) {
     super(props);
-
+    
     this.state = {
-      howLong: this.getHowLong(props.date),
-      moneySaved: this.getMoneySaved(props.date, props.packsPerWeek, props.pricePerPack),
-      cigsMissed: this.getCigsMissed(props.date, props.packsPerWeek)
+      howLong: this.getHowLong(props.quitData),
+      moneySaved: this.getMoneySaved(props.quitData),
+      cigsMissed: this.getCigsMissed(props.quitData)
     }
   }
 
@@ -22,47 +22,47 @@ export default class Achievements extends Component {
     );
   }
 
-  getDuration(quitDate){
+  getDuration(date){
     const now = moment(Date.now());
-    const diff = now.diff(quitDate);
+    const diff = now.diff(date);
     return moment.duration(diff);
   }
 
-  getHowLong(quitDate){
-    if (!quitDate) {
+  getHowLong(quitData){
+    if (!quitData.date) {
       return null;
     } 
-    const duration = this.getDuration(quitDate);
+    const duration = this.getDuration(quitData.date);
     const days = duration.days();
     const hours = duration.hours();
     const minutes = duration.minutes();
     return `${days} days ${hours} hours ${minutes} minutes`
   }
 
-  getMoneySaved(quitDate, packsPerWeek, pricePerPack){
-    if (!quitDate || !packsPerWeek || !pricePerPack) {
+  getMoneySaved(quitData){
+    if (!quitData.date || !quitData.packsPerWeek || !quitData.pricePerPack) {
       return null;
     } 
-    const packsPerHour = packsPerWeek / 7 / 24; 
-    const totalMoney = this.getDuration(quitDate).asHours() * packsPerHour * pricePerPack;
+    const packsPerHour = quitData.packsPerWeek / 7 / 24; 
+    const totalMoney = this.getDuration(quitData.date).asHours() * quitData.pricePerPack * packsPerHour ;
     return parseFloat(totalMoney.toFixed(2));
   }
 
-  getCigsMissed(quitDate, packsPerWeek){
-    if (!quitDate || !packsPerWeek) {
+  getCigsMissed(quitData){
+    if (!quitData.date || !quitData.packsPerWeek) {
       return null;
     } 
+    const packsPerHour = quitData.packsPerWeek / 7 / 24; 
     const cigsPerPack = 20;
-    const packsPerHour = packsPerWeek / 7 / 24; 
-    const cigsMissed =  this.getDuration(quitDate).asHours() * packsPerHour * cigsPerPack;
+    const cigsMissed =  this.getDuration(quitData.date).asHours() * packsPerHour * cigsPerPack;
     return Math.floor(cigsMissed);
   }
 
   tick() {
     this.setState((state, props) => ({
-      howLong: this.getHowLong(props.date),
-      moneySaved: this.getMoneySaved(props.date, props.packsPerWeek, props.pricePerPack),
-      cigsMissed: this.getCigsMissed(props.date, props.packsPerWeek)
+      howLong: this.getHowLong(props.quitData),
+      moneySaved: this.getMoneySaved(props.quitData),
+      cigsMissed: this.getCigsMissed(props.quitData)
     }));
   }
 
