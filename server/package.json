@@ -1,16 +1,23 @@
 {
-  "name": "api-help-me-quit",
+  "name": "help-me-quit",
   "version": "1.0.0",
-  "description": "Node js api sample",
+  "description": "MERN app to help you quit smoking",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "cd react-ui/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
+  "cacheDirectories": [
+    "node_modules",
+    "react-ui/node_modules"
+  ],
   "keywords": [
     "node",
-    "api"
+    "api",
+    "mern",
+    "react"
   ],
   "author": "denisegiubilei",
   "license": "ISC",
