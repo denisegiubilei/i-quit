@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import DatePicker from 'react-datepicker';
-import moment from 'moment'
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Achievements from '../achievements/achievements.component';
 import axios from 'axios';
 
 import './create-profile.component.css';
 import 'react-datepicker/dist/react-datepicker.css';
 
-import Achievements from '../achievements/achievements.component';
-
-export default class CreateProfile extends Component {
+export default class CreateProfile extends React.Component {
 
   constructor(props) {
     super(props);
@@ -80,8 +80,8 @@ export default class CreateProfile extends Component {
       password: this.state.password
     };
 
-   // axios.post('http://localhost:4000/api/profiles/create', newQuitProfile)
-//  .then(res => console.log(res.data));
+    // axios.post('http://localhost:4000/api/profiles/create', newQuitProfile)
+    //  .then(res => console.log(res.data));
 
   }
 
@@ -89,72 +89,67 @@ export default class CreateProfile extends Component {
     return (
       <React.Fragment>
         <section id="create-profile" className="section-profile">
-          <form onSubmit={this.onSubmit} className="form">
-            <div className="form-group">
+          <Form>
+            <Form.Group controlId="quit-date">
+              {/* <Form.Label>The day I quit</Form.Label> */}
               <DatePicker
-                placeholderText="The day I quit"
-                selected={this.state.date}
-                onChange={this.onChangeDate}
-                className="form-control"
-                showTimeSelect
-                timeFormat="HH:mm"
-                timeIntervals={60}
-                dateFormat="MMMM d, yyyy h:mm aa"
-                timeCaption="time"
+                  placeholderText="The day I quit"
+                  selected={this.state.date}
+                  onChange={this.onChangeDate}
+                  className="form-control"
+                  showTimeSelect
+                  timeFormat="HH:mm"
+                  timeIntervals={60}
+                  dateFormat="MMMM d, yyyy h:mm aa"
+                  timeCaption="time"
+                />
+            </Form.Group>
+            <Form.Group controlId="packs-per-week">
+              {/* <Form.Label>Packs per Week</Form.Label> */}
+              <Form.Control 
+                type="number" 
+                placeholder="Packs per Week" 
+                value={this.props.packsPerWeek}
+                onChange={this.onChangePacksPerWeek}
               />
-            </div>
-            <div className="row">
-              <div className="col">
-                <div className="form-group">
-                  <input
-                    type="number"
-                    className="form-control"
-                    placeholder="Packs per Week"
-                    value={this.props.packsPerWeek}
-                    onChange={this.onChangePacksPerWeek}
-                  />
-                </div>
-              </div>
-              <div className="col">
-                <div className="form-group">
-                  <input
-                    type="number"
-                    className="form-control"
-                    placeholder="Price per Pack"
-                    value={this.props.pricePerPack}
-                    onChange={this.onChangePricePerPack}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="form-group">
-              <input type="text"
-                  className="form-control"
-                  placeholder="E-mail"
-                  value={this.state.email}
-                  onBlur={this.onChangeEmail}
-                />
-            </div>
-            <div className="form-group" style={{display: this.props.showSignUp ? 'block' : 'none' }}>
-                <input type="text"
-                  className="form-control"
-                  placeholder="Password"
-                  value={this.state.password}
-                  onBlur={this.onChangePassword}
-                />
-              </div>
-              <div className="form-group" style={{display: this.props.showSignUp ? 'block' : 'none' }}>
-                <input type="text"
-                  className="form-control"
-                  placeholder="Confirm password"
-                  value={this.state.passwordConfirm}
-                  onBlur={this.onChangePasswordConfirm}
-                />
-              </div>
-            <div className="form-group">
-              <input type="submit" value="Check my progress" className="btn btn-dark" />
-            </div>
-          </form>
+            </Form.Group>
+            <Form.Group controlId="price-per-pack">
+              {/* <Form.Label>Price per pack</Form.Label> */}
+              <Form.Control 
+                type="number" 
+                placeholder="Price per pack" 
+                value={this.props.pricePerPack}
+                onChange={this.onChangePricePerPack}
+              />
+            </Form.Group>
+            <Form.Group controlId="sign-up-email" style={{ display: this.props.showSignUp ? 'block' : 'none' }}>
+              <Form.Control 
+                type="email" 
+                placeholder="Email" 
+                value={this.props.email}
+                onChange={this.onChangeEmail}
+              />
+            </Form.Group>
+            <Form.Group controlId="sign-up-password" style={{ display: this.props.showSignUp ? 'block' : 'none' }}>
+              <Form.Control 
+                type="password" 
+                placeholder="Password"
+                value={this.state.password}
+                onChange={this.onChangePassword}
+              />
+            </Form.Group>
+            <Form.Group controlId="sign-up-confirm-password" style={{ display: this.props.showSignUp ? 'block' : 'none' }}>
+              <Form.Control 
+                type="password" 
+                placeholder="Confirm password"
+                value={this.state.passwordConfirm}
+                onChange={this.onChangePasswordConfirm}
+              />
+            </Form.Group>
+            <Button variant="dark" type="submit">
+              Check my Progress
+            </Button>
+          </Form>;
         </section>
         <section id="achievements">
           <Achievements date={this.state.date} pricePerPack={this.state.pricePerPack} packsPerWeek={this.state.packsPerWeek} />
