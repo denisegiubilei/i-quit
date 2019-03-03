@@ -2,11 +2,11 @@
   "name": "help-me-quit",
   "version": "1.0.0",
   "description": "MERN app to help you quit smoking",
-  "main": "server.js",
+  "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cd server && nodemon server.js",
-    "start": "cd server && node server.js",
+    "start": "cd server && node server/server.js",
+    "dev": "concurrently \"cd react-ui && npm run start\" \"nodemon server/server.js\"",
     "heroku-postbuild": "cd react-ui/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "cacheDirectories": [
@@ -27,7 +27,8 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "mongodb": "^3.1.10",
-    "mongoose": "^5.4.2"
+    "mongoose": "^5.4.2",
+    "concurrently": "^4.1.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"
