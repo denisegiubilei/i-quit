@@ -24,7 +24,7 @@ const app = express();
 app.use(cors());
 
 //Static file declaration
-app.use(express.static(path.join(__dirname, 'react-ui/build')));
+app.use(express.static(path.join(__dirname, '/../react-ui/build')));
 
 //Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -42,15 +42,15 @@ app.use('/api', profiles);
 
 //production mode
 if(process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'react-ui/build')));
+  app.use(express.static(path.join(__dirname, '/../react-ui/build')));
   //
   app.get('*', (req, res) => {
-    res.sendfile(path.join(__dirname = 'client/react-ui/index.html'));
+    res.sendfile(path.join(__dirname = '/../react-ui/index.html'));
   })
 }
 //build mode
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/react-ui/public/index.html'));
+  res.sendFile(path.join(__dirname + '/../react-ui/public/index.html'));
 })
 
 //Server
