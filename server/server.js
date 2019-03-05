@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 const profiles = require('./routes/profile.route');
 
@@ -22,6 +23,9 @@ const app = express();
 
 app.use(cors());
 
+//Static file declaration
+app.use(express.static(path.join(__dirname, 'react-ui/build')));
+
 //Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -35,6 +39,19 @@ mongoose
 
 // Use Routes
 app.use('/api', profiles);
+
+//production mode
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'react-ui/build')));
+  //
+  app.get('*', (req, res) => {
+    res.sendfile(path.join(__dirname = 'client/react-ui/index.html'));
+  })
+}
+//build mode
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/react-ui/public/index.html'));
+})
 
 //Server
 const port = process.env.PORT || 4000;

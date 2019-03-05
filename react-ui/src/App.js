@@ -18,7 +18,17 @@ class App extends Component {
       packsPerWeek: null,
       pricePerPack: null,
     };
+    this.connecToServer = this.connecToServer.bind(this);
   }
+
+  connecToServer() {
+    fetch('/');
+  }
+
+  componentDidMount() {
+    this.connecToServer();
+  }
+
   render() {
     return (
       <Router>
