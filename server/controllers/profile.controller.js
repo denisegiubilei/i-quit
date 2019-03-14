@@ -20,6 +20,16 @@ exports.createProfile = (req, res) => {
   })
 };
 
+exports.getProfileByEmail = (req, res) => {
+  Profile.find({ email: req.params.email }, (err, profiles) => {
+    if (err) {
+      res.send(err);
+    }
+    res.send(profiles[0]);
+  });
+};
+
+
 exports.getProfilesById = (req, res) => {
   const id = new mongoose.Types.ObjectId(req.params.id);
   Profile.findById(id , (err, profile) => {

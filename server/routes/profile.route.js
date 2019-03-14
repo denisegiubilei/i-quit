@@ -6,9 +6,9 @@ router.get('/test', profilesController.test);
 
 router.get('/profiles', profilesController.getProfiles);
 
- router.post('/profiles/create', profilesController.createProfile);
+router.post('/profiles/create', profilesController.createProfile);
 
-// router.get('/profiles/:id', profilesController.getProfilesById);
+router.get('/profiles/email/:email', profilesController.getProfileByEmail);
 
 // router.put('/profiles/:id/update', profilesController.updateProfile);
 

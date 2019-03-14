@@ -2,7 +2,8 @@ import React from 'react';
 import DatePicker from 'react-datepicker';
 import Form from 'react-bootstrap/Form';
 import Achievements from '../achievements/achievements.component';
-import SignUp from '../sign-up/sign-up.component'
+import SignUp from '../login-control/sign-up.component'
+import SignIn from '../login-control/sign-in.component'
 
 import './create-profile.component.css';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -77,6 +78,10 @@ export default class CreateProfile extends React.Component {
                 onChange={this.handleInputChange}
               />
             </Form.Group>
+            <SignIn
+              buttonTitle="Login"
+              modalTitle="Login"
+            />
             <SignUp 
               buttonTitle="Save my Progress"
               modalTitle="Save my Progress"
