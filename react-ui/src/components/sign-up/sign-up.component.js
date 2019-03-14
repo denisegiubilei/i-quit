@@ -16,11 +16,7 @@ class SignUp extends React.Component {
 
     this.state = {
       show: false,
-      quitData: {
-        date: this.props.date,
-        packsPerWeek: this.props.packsPerWeek,
-        pricePerPack: this.props.pricePerPack
-      },
+      quitData: props.quitData,
       email: '',
       password: '',
       passwordConfirm: ''
@@ -32,7 +28,10 @@ class SignUp extends React.Component {
   }
 
   handleShow() {
-    this.setState({ show: true });
+    this.setState((state, props) => ({
+      show: true,
+      quitData: props.quitData
+    }));
   }
 
   handleInputChange(event) {
@@ -46,10 +45,8 @@ class SignUp extends React.Component {
   }
 
   handleSubmit(e) {
-    console.log(`Submitting form`);
+    console.log(`Submitting form asdasdas ${this.state.quitData.packsPerWeek}`);
     e.preventDefault();
-
-    console.log(`Submitting form`);
 
     const newQuitProfile = {
       date: this.state.quitData.date,

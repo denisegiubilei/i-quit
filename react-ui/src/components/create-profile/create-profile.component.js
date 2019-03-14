@@ -80,6 +80,7 @@ export default class CreateProfile extends React.Component {
             <SignUp 
               buttonTitle="Save my Progress"
               modalTitle="Save my Progress"
+              quitData={this.state}
             />
           </Form>;
           
