@@ -2,8 +2,6 @@ import React from 'react';
 import Badge from './Badge/Badge'
 import moment from 'moment'
 
-import './Badges.css';
-
 class Badges extends React.Component {
   constructor(props) {
     super(props);
@@ -40,7 +38,7 @@ class Badges extends React.Component {
   }
 
   getMoneySaved(quitData) {
-    if (!quitData.date || !quitData.packsPerWeek || !quitData.pricePerPack) {
+    if (quitData === undefined || !quitData.date || !quitData.packsPerWeek || !quitData.pricePerPack) {
       return null;
     }
     const packsPerHour = quitData.packsPerWeek / 7 / 24;
@@ -75,7 +73,7 @@ class Badges extends React.Component {
     ]
 
     return (
-      <div>
+      <div class="badges">
         {
           badges.map(badge =>
             <Badge
