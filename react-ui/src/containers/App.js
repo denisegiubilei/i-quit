@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import AnchorLink from 'react-anchor-link-smooth-scroll'
-import logo from './static/stop.png';
+import logo from '../static/stop.png';
 
-import CreateTodo from './components/create-profile/create-profile.component';
-import EditTodo from './components/edit-todo.component';
-import Achievments from './components/achievements/achievements.component.js';
+import CreateProfile from '../components/CreateProfile/CreateProfile';
 
 import './App.css';
 
@@ -58,8 +56,7 @@ class App extends Component {
 
           </header>
           
-          <Route path="/edit/:id" component={EditTodo} />
-          <Route path="/" component={CreateTodo} />
+          <Route path="/" component={CreateProfile} />
          
         </div>
         

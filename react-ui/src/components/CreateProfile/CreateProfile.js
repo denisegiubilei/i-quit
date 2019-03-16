@@ -1,11 +1,11 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import Form from 'react-bootstrap/Form';
-import Achievements from '../achievements/achievements.component';
-import SignUp from '../login-control/sign-up.component'
-import SignIn from '../login-control/sign-in.component'
+import Badges from '../Badges/Badges';
+import SignUp from '../LoginControl/SignUp'
+import SignIn from '../LoginControl/SignIn'
 
-import './create-profile.component.css';
+import './CreateProfile.css';
 import 'react-datepicker/dist/react-datepicker.css';
 
 export default class CreateProfile extends React.Component {
@@ -91,7 +91,7 @@ export default class CreateProfile extends React.Component {
           
         </section>
         <section id="achievements">
-          <Achievements quitData={this.state} />
+          <Badges quitData={this.state} />
         </section>
       </React.Fragment>
     )
