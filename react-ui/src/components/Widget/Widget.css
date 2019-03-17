@@ -1,20 +1,20 @@
-.Badge {
-  font-size: 1.1em;
+.Widget {
+  font-size: 20px;
   width: 250px;
   display: table-cell;
 }
 
-.Badge img {
+.Widget img {
   width: 200px;
   height: 150px;
 }
 
-.Badge .details {
+.Widget .details {
   padding: 10px;
 }
 
 @media screen and (max-width: 680px) {
-  .Badge {
+  .Widget {
     display: flex;
     flex-direction: column;
     align-items: center;

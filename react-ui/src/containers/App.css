@@ -33,4 +33,21 @@
   min-height: 50vh;
   justify-content: center;
   align-items: center;
+  padding: 20px;
+  position: relative;
+}
+
+.future-section {
+  background-color: #151515;
+  min-height: 100vh;
+}
+
+.see-the-future {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 1em;
+  color: #000066;
+  padding: 10px;
 }

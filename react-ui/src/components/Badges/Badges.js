@@ -2,21 +2,31 @@ import React from 'react';
 import Badge from './Badge/Badge'
 import moment from 'moment'
 
+import './Badges.css'
+
 class Badges extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      howLong: this.getHowLong(props.quitData),
-      moneySaved: this.getMoneySaved(props.quitData),
-      cigsMissed: this.getCigsMissed(props.quitData),
+      howLong: null,
+      moneySaved: null,
+      cigsMissed: null
     }
+  }
+
+  componentWillReceiveProps(nextProps){
+    this.setState((prevState, nextProps) => ({
+      howLong: this.getHowLong(nextProps.quitData),
+      moneySaved: this.getMoneySaved(nextProps.quitData),
+      cigsMissed: this.getCigsMissed(nextProps.quitData)
+    }))
   }
 
   componentDidMount() {
     this.timerID = setInterval(
       () => this.tick(),
-      1000
+      60000
     );
   }
 
@@ -38,7 +48,7 @@ class Badges extends React.Component {
   }
 
   getMoneySaved(quitData) {
-    if (quitData === undefined || !quitData.date || !quitData.packsPerWeek || !quitData.pricePerPack) {
+    if (!quitData.date || !quitData.packsPerWeek || !quitData.pricePerPack) {
       return null;
     }
     const packsPerHour = quitData.packsPerWeek / 7 / 24;
@@ -57,7 +67,7 @@ class Badges extends React.Component {
   }
 
   tick() {
-    this.setState((state, props) => ({
+    this.setState((prevState, props) => ({
       howLong: this.getHowLong(props.quitData),
       moneySaved: this.getMoneySaved(props.quitData),
       cigsMissed: this.getCigsMissed(props.quitData)
@@ -73,7 +83,7 @@ class Badges extends React.Component {
     ]
 
     return (
-      <div class="badges">
+      <div className="badges">
         {
           badges.map(badge =>
             <Badge

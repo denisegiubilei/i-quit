@@ -1,6 +1,7 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import Form from 'react-bootstrap/Form';
+import PropTypes from 'prop-types'
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -45,6 +46,12 @@ class QuitForm extends React.Component {
         </div>
     )
   }
+}
+
+QuitForm.propTypes = {
+  handleInputChange: PropTypes.func,
+  handleChangeDate: PropTypes.func,
+  quitData: PropTypes.object
 }
 
 export default QuitForm;

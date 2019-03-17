@@ -1,0 +1,23 @@
+.circle-slider-container {
+  position: relative;
+}
+.circle-slider{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 60px;
+  left: 0;
+}
+.circle-title {
+  z-index: 10;
+  display: flex;
+  min-height: 70vh;
+  justify-content: center;
+  align-items: center;
+  color: #eee;
+  font-size: 1.3em;
+}
+
+.future-widgets {
+  color: #eee;
+}
