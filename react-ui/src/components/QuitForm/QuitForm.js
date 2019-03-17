@@ -7,6 +7,10 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 class QuitForm extends React.Component {
 
+  handleDateChangeRaw = (e) => {
+    e.preventDefault();
+  }
+
   render() {
     return (
         <div className="quit-form">
@@ -16,6 +20,7 @@ class QuitForm extends React.Component {
                   placeholderText="The day I quit"
                   selected={this.props.quitData.date}
                   onChange={this.props.handleChangeDate}
+                  onChangeRaw={this.handleDateChangeRaw}
                   className="form-control"
                   showTimeSelect
                   timeFormat="HH:mm"
