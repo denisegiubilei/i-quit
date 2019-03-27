@@ -1,16 +1,15 @@
-import React from 'react';
-import DatePicker from 'react-datepicker';
-import Form from 'react-bootstrap/Form';
-import PropTypes from 'prop-types'
+import React from "react";
+import DatePicker from "react-datepicker";
+import Form from "react-bootstrap/Form";
+import PropTypes from "prop-types";
 
-import 'react-datepicker/dist/react-datepicker.css';
+import "react-datepicker/dist/react-datepicker.css";
 
 class QuitForm extends React.Component {
-
-  onDatepickerRef(el) { 
-    if (el && el.input) { 
-      el.input.readOnly = true; 
-    } 
+  onDatepickerRef(el) {
+    if (el && el.input) {
+      el.input.readOnly = true;
+    }
   }
 
   render() {
@@ -51,7 +50,7 @@ class QuitForm extends React.Component {
           </Form.Group>
         </Form>
       </div>
-    )
+    );
   }
 }
 
@@ -59,6 +58,6 @@ QuitForm.propTypes = {
   handleInputChange: PropTypes.func,
   handleChangeDate: PropTypes.func,
   quitData: PropTypes.object
-}
+};
 
 export default QuitForm;

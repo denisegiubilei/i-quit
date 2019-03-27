@@ -1,5 +1,5 @@
 import React from 'react';
-import Badge from './Badge/Badge'
+import Badge from '../../components/Badge/Badge'
 import moment from 'moment'
 
 import './Badges.css'
@@ -77,9 +77,9 @@ class Badges extends React.Component {
   render() {
 
     let badges = [
-      { key: 'b-how-long', title: 'How long', image: require('../../static/time.gif'), details: this.state.howLong },
-      { key: 'b-money-saved', title: 'Money saved', image: require('../../static/money.gif'), details: this.state.moneySaved },
-      { key: 'b-cigs-missed', title: 'Cigaretts missed', image: require('../../static/cigars.gif'), details: this.state.cigsMissed }
+      { key: 'b-how-long', title: 'How long', image: require('../../assets/time.gif'), details: this.state.howLong },
+      { key: 'b-money-saved', title: 'Money saved', image: require('../../assets/money.gif'), details: this.state.moneySaved },
+      { key: 'b-cigs-missed', title: 'Cigaretts missed', image: require('../../assets/cigars.gif'), details: this.state.cigsMissed }
     ]
 
     return (

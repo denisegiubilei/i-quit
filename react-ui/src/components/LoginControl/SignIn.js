@@ -1,9 +1,9 @@
-import React from 'react';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import React from "react";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
-import axios from 'axios';
+import axios from "axios";
 
 class SignUp extends React.Component {
   constructor(props, context) {
@@ -29,7 +29,7 @@ class SignUp extends React.Component {
 
   handleInputChange(event) {
     const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
 
     this.setState({
@@ -42,9 +42,9 @@ class SignUp extends React.Component {
 
     const email = this.state.email;
 
-    axios.get(`http://localhost:4000/api/profiles/email/${email}`)
-     .then(res => console.log(res.data));
-
+    axios
+      .get(`http://localhost:4000/api/profiles/email/${email}`)
+      .then(res => console.log(res.data));
   }
 
   render() {
@@ -54,8 +54,8 @@ class SignUp extends React.Component {
           Login
         </Button>
 
-        <Modal 
-          show={this.state.show} 
+        <Modal
+          show={this.state.show}
           onHide={this.handleClose}
           // aria-labelledby="contained-modal-title-vcenter"
           // centered
@@ -64,26 +64,26 @@ class SignUp extends React.Component {
             <Modal.Title>Sign In</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-          <Form>
-            <Form.Group controlId="sign-in-email">
-              <Form.Control 
-                name="email"
-                type="email" 
-                placeholder="Email" 
-                value={this.state.email}
-                onChange={this.handleInputChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="sign-in-password">
-              <Form.Control 
-                name="password"
-                type="password" 
-                placeholder="Password"
-                value={this.state.password}
-                onChange={this.handleInputChange}
-              />
-            </Form.Group>
-          </Form>
+            <Form>
+              <Form.Group controlId="sign-in-email">
+                <Form.Control
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  value={this.state.email}
+                  onChange={this.handleInputChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="sign-in-password">
+                <Form.Control
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  value={this.state.password}
+                  onChange={this.handleInputChange}
+                />
+              </Form.Group>
+            </Form>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={this.handleClose}>

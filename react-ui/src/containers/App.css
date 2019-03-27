@@ -22,7 +22,7 @@
   justify-content: center;
   align-items: center;
 
-  background-image: url(../static/quit-background.jpg);
+  background-image: url(../assets/quit-background.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;  
@@ -40,6 +40,10 @@
 .future-section {
   background-color: #151515;
   min-height: 100vh;
+  /* display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center; */
 }
 
 .see-the-future {

@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import AnchorLink from 'react-anchor-link-smooth-scroll'
-import logo from '../static/stop.png';
+import AnchorLink from "react-anchor-link-smooth-scroll";
+import logo from "../static/stop.png";
 
-import QuitForm from '../components/QuitForm/QuitForm';
-import SignUp from '../components/LoginControl/SignUp'
-import SignIn from '../components/LoginControl/SignIn'
-import Badges from '../components/Badges/Badges';
-import FutureSlider from '../components/FutureSlider/FutureSlider'
-import Widget from '../components/Widget/Widget'
+import QuitForm from "../components/QuitForm/QuitForm";
+import SignUp from "../components/LoginControl/SignUp";
+import SignIn from "../components/LoginControl/SignIn";
+import Badges from "./Badges/Badges";
+import FutureSlider from "./FutureSlider/FutureSlider";
 
-import './App.css';
+import "./App.css";
 
 class App extends Component {
   constructor(props) {
@@ -28,7 +27,7 @@ class App extends Component {
   }
 
   connectToServer() {
-    fetch('/');
+    fetch("/");
   }
 
   componentDidMount() {
@@ -43,7 +42,7 @@ class App extends Component {
 
   handleInputChange(event) {
     const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
     this.setState({
       [name]: value
@@ -54,7 +53,7 @@ class App extends Component {
     return (
       <div className="App">
         <section id="app-header" className="App-header">
-          <AnchorLink href='#create-profile'>
+          <AnchorLink href="#create-profile">
             <img src={logo} className="App-logo" alt="logo" />
           </AnchorLink>
         </section>
@@ -65,10 +64,7 @@ class App extends Component {
               handleInputChange={this.handleInputChange}
               handleChangeDate={this.handleChangeDate}
             />
-            <SignIn
-              buttonTitle="Login"
-              modalTitle="Login"
-            />
+            <SignIn buttonTitle="Login" modalTitle="Login" />
             <SignUp
               buttonTitle="Save my Progress"
               modalTitle="Save my Progress"
@@ -82,13 +78,13 @@ class App extends Component {
             handleInputChange={this.handleInputChange}
             handleChangeDate={this.handleChangeDate}
           />
-          <AnchorLink href='#future'>
+          <AnchorLink href="#future">
             <span className="see-the-future">See the future</span>
           </AnchorLink>
         </section>
         <section id="future" className="future-section">
-          <FutureSlider 
-            date={this.state.date} 
+          <FutureSlider
+            date={this.state.date}
             packsPerWeek={this.state.packsPerWeek}
             pricePerPack={this.state.pricePerPack}
           />

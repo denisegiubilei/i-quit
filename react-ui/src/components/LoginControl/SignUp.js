@@ -1,9 +1,9 @@
-import React from 'react';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import React from "react";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
-import axios from 'axios';
+import axios from "axios";
 
 class SignUp extends React.Component {
   constructor(props, context) {
@@ -17,9 +17,9 @@ class SignUp extends React.Component {
     this.state = {
       show: false,
       quitData: props.quitData,
-      email: '',
-      password: '',
-      passwordConfirm: ''
+      email: "",
+      password: "",
+      passwordConfirm: ""
     };
   }
 
@@ -36,7 +36,7 @@ class SignUp extends React.Component {
 
   handleInputChange(event) {
     const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
 
     this.setState({
@@ -56,11 +56,11 @@ class SignUp extends React.Component {
       password: this.state.password
     };
 
-    console.log(newQuitProfile.pricePerPack)
+    console.log(newQuitProfile.pricePerPack);
 
-    axios.post('http://localhost:4000/api/profiles/create', newQuitProfile)
-     .then(res => console.log(res.data));
-
+    axios
+      .post("http://localhost:4000/api/profiles/create", newQuitProfile)
+      .then(res => console.log(res.data));
   }
 
   render() {
@@ -70,8 +70,8 @@ class SignUp extends React.Component {
           Save my Progress
         </Button>
 
-        <Modal 
-          show={this.state.show} 
+        <Modal
+          show={this.state.show}
           onHide={this.handleClose}
           // aria-labelledby="contained-modal-title-vcenter"
           // centered
@@ -80,35 +80,35 @@ class SignUp extends React.Component {
             <Modal.Title>Save my Progress</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-          <Form>
-            <Form.Group controlId="sign-up-email">
-              <Form.Control 
-                name="email"
-                type="email" 
-                placeholder="Email" 
-                value={this.state.email}
-                onChange={this.handleInputChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="sign-up-password">
-              <Form.Control 
-                name="password"
-                type="password" 
-                placeholder="Password"
-                value={this.state.password}
-                onChange={this.handleInputChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="sign-up-confirm-password">
-              <Form.Control 
-                name="passwordConfirm"
-                type="password" 
-                placeholder="Confirm password"
-                value={this.state.passwordConfirm}
-                onChange={this.handleInputChange}
-              />
-            </Form.Group>
-          </Form>
+            <Form>
+              <Form.Group controlId="sign-up-email">
+                <Form.Control
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  value={this.state.email}
+                  onChange={this.handleInputChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="sign-up-password">
+                <Form.Control
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  value={this.state.password}
+                  onChange={this.handleInputChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="sign-up-confirm-password">
+                <Form.Control
+                  name="passwordConfirm"
+                  type="password"
+                  placeholder="Confirm password"
+                  value={this.state.passwordConfirm}
+                  onChange={this.handleInputChange}
+                />
+              </Form.Group>
+            </Form>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={this.handleClose}>
