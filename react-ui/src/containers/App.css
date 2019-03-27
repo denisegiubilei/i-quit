@@ -55,3 +55,10 @@
   color: #000066;
   padding: 10px;
 }
+
+@media screen and (max-width: 680px) {
+  .see-the-future, .future-section {
+    display: none;
+  }
+  
+}

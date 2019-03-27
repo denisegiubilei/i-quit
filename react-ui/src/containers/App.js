@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import AnchorLink from "react-anchor-link-smooth-scroll";
-import logo from "../static/stop.png";
+import logo from "../assets/stop.png";
 
+import moment from "moment"
 import QuitForm from "../components/QuitForm/QuitForm";
-import SignUp from "../components/LoginControl/SignUp";
-import SignIn from "../components/LoginControl/SignIn";
+import SignUp from "./LoginControl/SignUp";
+import SignIn from "./LoginControl/SignIn";
 import Badges from "./Badges/Badges";
 import FutureSlider from "./FutureSlider/FutureSlider";
 
@@ -21,9 +22,12 @@ class App extends Component {
       pricePerPack: null,
       howLong: null
     };
+    this.sectionRef = React.createRef();
     this.connectToServer = this.connectToServer.bind(this);
     this.handleChangeDate = this.handleChangeDate.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleScrollToSection = this.handleScrollToSection.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
   connectToServer() {
@@ -49,6 +53,22 @@ class App extends Component {
     });
   }
 
+  handleScrollToSection() {
+    window.scrollTo(0, this.sectionRef.current.offsetTop);
+  }
+
+  handleLogin(profile) {
+    const date = moment(profile.date).toDate();
+    console.log(date);
+    this.setState({
+      date: date,
+      packsPerWeek: profile.packsPerWeek,
+      pricePerPack: profile.pricePerPack,
+      email: profile.email,
+      _id: profile.id
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -57,18 +77,28 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo" />
           </AnchorLink>
         </section>
-        <section id="create-profile" className="create-profile-section">
+        <section
+          id="create-profile"
+          className="create-profile-section"
+          ref={this.sectionRef}
+        >
           <div>
             <QuitForm
               quitData={this.state}
               handleInputChange={this.handleInputChange}
               handleChangeDate={this.handleChangeDate}
             />
-            <SignIn buttonTitle="Login" modalTitle="Login" />
+            <SignIn
+              buttonTitle="Login"
+              modalTitle="Login"
+              handleLogin={this.handleLogin}
+              feedback={this.handleScrollToSection}
+            />
             <SignUp
               buttonTitle="Save my Progress"
               modalTitle="Save my Progress"
               quitData={this.state}
+              feedback={this.handleScrollToSection}
             />
           </div>
         </section>

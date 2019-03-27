@@ -45,7 +45,6 @@ class SignUp extends React.Component {
   }
 
   handleSubmit(e) {
-    console.log(`Submitting form asdasdas ${this.state.quitData.packsPerWeek}`);
     e.preventDefault();
 
     const newQuitProfile = {
@@ -56,11 +55,12 @@ class SignUp extends React.Component {
       password: this.state.password
     };
 
-    console.log(newQuitProfile.pricePerPack);
-
     axios
       .post("http://localhost:4000/api/profiles/create", newQuitProfile)
       .then(res => console.log(res.data));
+
+    this.handleClose();
+    this.props.feedback();
   }
 
   render() {

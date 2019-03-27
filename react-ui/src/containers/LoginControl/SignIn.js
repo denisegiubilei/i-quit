@@ -44,7 +44,12 @@ class SignUp extends React.Component {
 
     axios
       .get(`http://localhost:4000/api/profiles/email/${email}`)
-      .then(res => console.log(res.data));
+      .then(res => {
+        console.log(res.data);
+        this.props.handleLogin(res.data);
+        this.handleClose();
+        this.props.feedback();
+      });   
   }
 
   render() {
