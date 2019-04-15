@@ -56,7 +56,7 @@ class SignUp extends React.Component {
     };
 
     axios
-      .post("http://localhost:4000/api/profiles/create", newQuitProfile)
+      .post("api/profiles/create", newQuitProfile)
       .then(res => console.log(res.data));
 
     this.handleClose();
