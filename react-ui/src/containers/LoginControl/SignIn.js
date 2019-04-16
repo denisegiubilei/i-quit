@@ -46,7 +46,7 @@ class SignUp extends React.Component {
     };
 
     axios
-      .post("http://localhost:4000/api/profiles/login", profile)
+      .post("api/profiles/login", profile)
       .then(res => {
         console.log(res.data);
         this.props.handleLogin(res.data.profile);
