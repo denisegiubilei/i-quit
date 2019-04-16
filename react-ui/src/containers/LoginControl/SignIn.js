@@ -40,13 +40,16 @@ class SignUp extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    const email = this.state.email;
+    const profile = {
+      email: this.state.email,
+      password: this.state.password
+    };
 
     axios
-      .get(`api/profiles/email/${email}`)
+      .post("http://localhost:4000/api/profiles/login", profile)
       .then(res => {
         console.log(res.data);
-        this.props.handleLogin(res.data);
+        this.props.handleLogin(res.data.profile);
         this.handleClose();
         this.props.feedback();
       });   

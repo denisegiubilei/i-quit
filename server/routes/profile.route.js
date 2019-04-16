@@ -8,6 +8,8 @@ router.get('/profiles', profilesController.getProfiles);
 
 router.post('/profiles/create', profilesController.createProfile);
 
+router.post('/profiles/login', profilesController.login);
+
 router.get('/profiles/email/:email', profilesController.getProfileByEmail);
 
 // router.put('/profiles/:id/update', profilesController.updateProfile);

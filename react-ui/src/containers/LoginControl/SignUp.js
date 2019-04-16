@@ -52,11 +52,12 @@ class SignUp extends React.Component {
       packsPerWeek: this.state.quitData.packsPerWeek,
       pricePerPack: this.state.quitData.pricePerPack,
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
+      passwordConfirm: this.state.passwordConfirm
     };
 
     axios
-      .post("api/profiles/create", newQuitProfile)
+      .post("http://localhost:4000/api/profiles/create", newQuitProfile)
       .then(res => console.log(res.data));
 
     this.handleClose();
